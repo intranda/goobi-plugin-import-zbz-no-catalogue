@@ -151,6 +151,13 @@ public class ZbzNoCatalogueImportPlugin implements IImportPluginVersion2 {
                     anchorid.setValue(record.getId().substring(0, record.getId().indexOf("_")));
                     anchor.addMetadata(anchorid);
 
+                    // create metadata field for main title
+                    if (fields.length > 2) {
+                        Metadata mdTitle = new Metadata(prefs.getMetadataTypeByName("TitleDocMain"));
+                        mdTitle.setValue(fields[2].trim());
+                        anchor.addMetadata(mdTitle);
+                    }
+
                     // add collection to anchor as well
                     MetadataType typeCollection = prefs.getMetadataTypeByName("singleDigCollection");
                     for (String c : form.getDigitalCollections()) {
@@ -189,10 +196,17 @@ public class ZbzNoCatalogueImportPlugin implements IImportPluginVersion2 {
                     work.addMetadata(md4);
                 }
 
+                // create metadata field for shelfmark
+                Metadata mdShelfmark = new Metadata(prefs.getMetadataTypeByName("shelfmarksource"));
+                mdShelfmark.setValue(fields[1].trim());
+                work.addMetadata(mdShelfmark);
+
                 // create metadata field for main title
-                Metadata md2 = new Metadata(prefs.getMetadataTypeByName("shelfmarksource"));
-                md2.setValue(fields[1].trim());
-                work.addMetadata(md2);
+                if (fields.length > 2) {
+                    Metadata mdTitle = new Metadata(prefs.getMetadataTypeByName("TitleDocMain"));
+                    mdTitle.setValue(fields[2].trim());
+                    work.addMetadata(mdTitle);
+                }
 
                 // all collections that where selected
                 if (form != null) {

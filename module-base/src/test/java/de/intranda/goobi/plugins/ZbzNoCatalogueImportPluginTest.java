@@ -28,7 +28,7 @@ import de.sub.goobi.config.ConfigPlugins;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ConfigPlugins.class })
 @PowerMockIgnore({ "javax.management.*", "javax.net.ssl.*" ,"jdk.internal.reflect.*"})
-public class KickStartImportPluginTest {
+public class ZbzNoCatalogueImportPluginTest {
 
 
 
@@ -67,14 +67,14 @@ public class KickStartImportPluginTest {
 
     @Test
     public void testConstructor() {
-        KickStartImportPlugin plugin = new KickStartImportPlugin();
+        ZbzNoCatalogueImportPlugin plugin = new ZbzNoCatalogueImportPlugin();
         assertNotNull(plugin);
-        assertEquals(ImportType.FILE, plugin.getImportTypes().get(0));
+        assertEquals(ImportType.Record, plugin.getImportTypes().get(0));
         plugin.setImportFolder(tempFolder.getAbsolutePath());
     }
 
     private XMLConfiguration getConfig() {
-        String file = "plugin_intranda_import_kick_start.xml";
+        String file = "plugin_intranda_import_zbz_no_catalogue.xml";
         XMLConfiguration config = new XMLConfiguration();
         config.setDelimiterParsingDisabled(true);
         try {

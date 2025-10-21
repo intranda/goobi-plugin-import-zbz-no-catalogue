@@ -3,6 +3,10 @@ title: Datenimport ohne Katalogabfrage für die Zentralbibliothek Zürich
 identifier: intranda_import_zb_no_catalogue
 description: Dieses Import Plugin für Goobi workflow erlaubt das Einspielen von Daten ohne Katalogabfrage, wie es für die Zentralbibliothek Zürich speziell für Mehrbändige Werke benötigt wird.
 published: true
+keywords:
+    - Goobi workflow
+    - Plugin
+    - Import Plugin
 ---
 
 ## Einführung
